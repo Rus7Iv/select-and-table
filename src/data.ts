@@ -1,4 +1,5 @@
-import { IItem, ITableData } from "./components/interfaces";
+import { ITableData } from "./components/Table/interfaces";
+import { IItem } from "./components/interfaces";
 
 export const options:IItem[] = [
   { id: 1, title: 'Слон' },
