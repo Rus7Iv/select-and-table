@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" @click="toggleOpen">
+  <div class="dropdown" :class="{ 'dropdown--open': isOpen }" @click="toggleOpen">
     <div class="dropdown__selected" :class="{ 'dropdown__selected--open': isOpen }">
       <span class="dropdown__placeholder" :class="{ 'dropdown__placeholder--selected': selected }">{{ placeholder }}</span>
       <span v-if="selected" class="dropdown__value">{{ selected.title }}</span>
@@ -62,6 +62,20 @@ export default defineComponent({
 .dropdown {
   position: relative;
   width: 200px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover {
+  box-shadow: none;
+  border: 1px solid #F968bf;
+}
+
+.dropdown--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
   border: 1px solid #F968bf;
 }
 
@@ -80,11 +94,15 @@ export default defineComponent({
 .dropdown__placeholder {
   transition: all 0.3s ease;
   color: rgba(41, 39, 125, 0.40);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .dropdown__placeholder--selected {
-  font-size: 12px;
+  font-size: 14px;
   transform: translateY(-20px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .dropdown__value {
@@ -111,8 +129,10 @@ export default defineComponent({
 .dropdown__list {
   position: absolute;
   width: 100%;
+  left: -1px;
   border: 1px solid #F968bf;
-  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   list-style: none;
   padding: 0;
   margin: 0;
