@@ -3,7 +3,7 @@
     <div class="dropdown__selected" :class="{ 'dropdown__selected--open': isOpen }">
       <span class="dropdown__placeholder" :class="{ 'dropdown__placeholder--selected': selected }">{{ placeholder }}</span>
       <span v-if="selected" class="dropdown__value">{{ selected.title }}</span>
-      <img class="dropdown__arrow" src="../assets/arrowSelect.svg" alt="arrow" />
+      <img class="dropdown__arrow" src="../../assets/arrowSelect.svg" alt="arrow" />
     </div>
     <transition name="fade">
       <ul v-if="isOpen" class="dropdown__list">
@@ -17,11 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue';
-
-interface Item {
-  id: number;
-  title: string;
-}
+import { IItem } from './interfaces';
 
 export default defineComponent({
   name: 'Dropdown',
@@ -31,19 +27,19 @@ export default defineComponent({
       default: '',
     },
     items: {
-      type: Array as PropType<Item[]>,
+      type: Array as PropType<IItem[]>,
       required: true,
     },
   },
   setup() {
     const isOpen = ref(false);
-    const selected = ref<Item | null>(null);
+    const selected = ref<IItem | null>(null);
 
     const toggleOpen = () => {
       isOpen.value = !isOpen.value;
     };
 
-    const selectItem = (item: Item) => {
+    const selectItem = (item: IItem) => {
       selected.value = item;
       isOpen.value = false;
     };

@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Select from './components/Select.vue';
+import Select from './components/Select/Select.vue';
 import Table from './components/Table/Table.vue';
 import { options, tableData } from './data';
 
