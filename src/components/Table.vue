@@ -5,7 +5,7 @@
         <tr>
           <th v-for="(column, index) in columns" :key="index" @click="sortTable(column)">
             {{ column }}
-            <img class="arrow" :class="{ active: currentSort.column === column, asc: currentSort.ascending }" src="../assets/arrowSort.svg" alt="arrow" />
+            <Arrow :isCurrentColumn="currentSort.column === column" :isAscending="currentSort.ascending" />
           </th>
         </tr>
       </thead>
@@ -20,6 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref, computed } from 'vue';
+import Arrow from '../assets/ArrowSort.vue';
 
 interface Data {
   [key: string]: number | string;
@@ -34,6 +35,9 @@ interface Data {
 
 export default defineComponent({
   name: 'SortableTable',
+  components: {
+    Arrow,
+  },
   props: {
     data: {
       type: Array as PropType<Data[]>,
@@ -89,8 +93,12 @@ th {
   cursor: pointer;
 }
 
-.arrow.active {
-  fill: #29277d;
+.arrow {
+  fill: #000; /* цвет по умолчанию */
+}
+
+.arrow-active {
+  fill: #29277d; /* цвет активной стрелки */
 }
 
 </style>
