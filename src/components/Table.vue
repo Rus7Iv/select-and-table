@@ -88,10 +88,9 @@ thead {
 th {
   cursor: pointer;
 }
-.arrow {
-  transition: transform 0.3s ease-in-out;
-}
+
 .arrow.active {
   fill: #29277d;
 }
+
 </style>
