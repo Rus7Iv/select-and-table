@@ -137,6 +137,7 @@ export default defineComponent({
   padding: 0;
   margin: 0;
   background-color: #fff;
+  z-index: 1;
 }
 
 .dropdown__item {

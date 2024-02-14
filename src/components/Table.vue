@@ -93,12 +93,12 @@ th {
   cursor: pointer;
 }
 
-.arrow {
-  fill: #000; /* цвет по умолчанию */
+td {
+  text-align: center;
 }
 
 .arrow-active {
-  fill: #29277d; /* цвет активной стрелки */
+  fill: #29277d;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Select :items="options" placeholder="Выберите животное" />
     <Table :data="tableData" />
   </div>
@@ -58,3 +58,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.container > * {
+  margin-bottom: 30px;
+}
+</style>
